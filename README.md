@@ -39,7 +39,7 @@ From within the project folder, open the 'script.js' file using a text editor of
 _______________5.) IMPORT THE ASSETS/ SHAPE FILES INTO YOUR SCRIPT___________________<br/>
 
 ![image](https://user-images.githubusercontent.com/75077556/125596583-ffe2719c-a354-4737-aec4-e630dea8d829.png)<br/>
-As shown in the image above, once your imports are in an organized fashion (import records), you will have to replace the highlighted import with the asset you ingested in step 3 above; the 'ngongarea AOI_shapefile'. Name the import with the same names in the existing import, i.e.<br/>
+As shown in the image above, once your imports are in an organized fashion (import records), you will have to replace the highlighted import with the asset you ingested in step 3 above; the 'NGONG AOI_shapefile'. Name the import with the same names in the existing import, i.e.<br/>
 -'AOI'<br/>
 
 ![image](https://user-images.githubusercontent.com/75077556/125587500-92fe80ac-13b9-4648-8571-54accc9e1041.png)<br/>
