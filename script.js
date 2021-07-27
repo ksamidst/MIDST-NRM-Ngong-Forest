@@ -3915,7 +3915,7 @@ var NaturalForest_2020 =
 //__________________1)Image Set up section_____________________  //
 ///////////////////////////////////////////////////////////////////
 
-/*Define area of interest from the Kibiku forest shape file.*/ 
+/*Define area of interest from the Ngong forest shape file.*/ 
 
 
 //Define cloud masking function for Sentinel-2
@@ -3931,6 +3931,7 @@ function maskS2clouds(image){
       .and(qa.bitwiseAnd(cirrusBitMask).eq(0));
   return image.updateMask(mask).divide(10000);
 }
+
 var Image2020 = Sentinel_1C
               //filter the image collection to the 2020 date range
               .filterDate('2020-01-01','2020-12-31')
@@ -3954,7 +3955,7 @@ var Image2016 = Sentinel_1C
               .median().clip(AOI);
 
 
-//Center the map onto the Kibiku forest area to a zoom level of 12
+//Center the map onto the Ngong forest area to a zoom level of 12
 Map.centerObject(AOI, 10);
 
 //Visualize the cloud free image
@@ -3985,7 +3986,7 @@ Export.image.toCloudStorage({
 //////////////////////////////////////////////////////////////////////////////////
 
 /* The following section defines the code block for supervised classification of the 
-    kibiku area imagery to the land cover classes.
+    Ngong area imagery to the land cover classes.
     The classes are defined as follows with their numeric labels as follows below:
     
     1: Forest land
@@ -4138,13 +4139,13 @@ var forestLandArea = classified2020.mask(forestMask2020);
 
 print(forestLandArea, '2020_Forest_Land_Area')
 
-Map.addLayer(forestMask2020.clip(AOI),{},'2020 Forest Land Area');
+Map.addLayer(forestMask2020.clip(AOI),{min:0,max:1,palette:['FF7F50','006400']},'2020 Forest Land Area');
 
 
 
 Export.image.toDrive({
   image: forestMask2020.clip(AOI),
-  description: '2020_Forest_Land_Area',
+  description: 'ngong_2020_Forest_Land_Area',
   region: AOI,
   scale: 10,
   maxPixels: 1e12,
@@ -4237,15 +4238,15 @@ print(forestMask2016,'Crop mask')
 
 var forestLandArea = classified2016.mask(forestMask2016);
 
-print(forestLandArea, '2016_Forest_Land_Area')
+print(forestLandArea, 'ngong_2016_Forest_Land_Area')
 
-Map.addLayer(forestMask2016.clip(AOI),{},'2016 Forest Land Area');
+Map.addLayer(forestMask2016.clip(AOI),{min:0,max:1,palette:['FF7F50','006400']},'2016 Forest Land Area');
 
 
 
 Export.image.toDrive({
   image: forestMask2016.clip(AOI),
-  description: '2016_Forest_Land_Area',
+  description: 'ngong_2016_Forest_Land_Area',
   region: AOI,
   scale: 10,
   maxPixels: 1e12,
